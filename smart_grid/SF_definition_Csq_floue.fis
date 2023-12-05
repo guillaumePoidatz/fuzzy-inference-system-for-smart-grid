@@ -1,0 +1,43 @@
+[System]
+Name='SF_definition_Csq_floue'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=0
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='tension_immeuble'
+Range=[0 100]
+NumMFs=3
+MF1='mf1':'trapmf',[-45 -5 5 45]
+MF2='mf2':'trapmf',[5 45 55 95]
+MF3='mf3':'trapmf',[55 95 105 145]
+
+[Input2]
+Name='mesures'
+Range=[0 100]
+NumMFs=8
+MF1='mf1':'trapmf',[-12.86 -1.429 1.429 12.86]
+MF2='mf2':'trapmf',[1.429 12.86 15.71 27.14]
+MF3='mf3':'trapmf',[15.71 27.14 30 41.43]
+MF4='mf4':'trapmf',[30 41.43 44.29 55.71]
+MF5='mf5':'trapmf',[44.29 55.71 58.57 70]
+MF6='mf6':'trapmf',[58.57 70 72.86 84.29]
+MF7='mf7':'trapmf',[72.86 84.29 87.14 98.57]
+MF8='mf8':'trapmf',[87.14 98.57 101.4 112.9]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='mf3':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Rules]

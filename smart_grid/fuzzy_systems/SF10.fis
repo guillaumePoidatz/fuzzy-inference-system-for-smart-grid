@@ -1,0 +1,78 @@
+[System]
+Name='SF10'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=27
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='tension_immeuble_aggrégée'
+Range=[0 100]
+NumMFs=3
+MF1='faible':'trapmf',[0 0 5 45]
+MF2='moyenne':'trapmf',[5 45 55 95]
+MF3='importante':'trapmf',[55 95 100 100]
+
+[Input2]
+Name='capacité_V2G'
+Range=[0 100]
+NumMFs=3
+MF1='faible':'trapmf',[0 0 5 45]
+MF2='moyenne':'trapmf',[5 45 55 95]
+MF3='importante':'trapmf',[55 95 100 100]
+
+[Input3]
+Name='prix_électricité'
+Range=[0 200]
+NumMFs=3
+MF1='faible':'trapmf',[0 0 50 90]
+MF2='moyen':'trapmf',[50 90 110 180]
+MF3='élevé':'trapmf',[110 180 200 200]
+
+[Output1]
+Name='mesures'
+Range=[0 1]
+NumMFs=8
+MF1='G2V-EXP-IC':'constant',[0]
+MF2='G2V-EXP':'constant',[1]
+MF3='EXP':'constant',[0]
+MF4='G2V':'constant',[0.2]
+MF5='V2G':'constant',[0.6]
+MF6='IMP':'constant',[0.8]
+MF7='V2G-IMP':'constant',[1]
+MF8='V2G-IMP-DC':'constant',[1]
+
+[Rules]
+1 1 1, 4 (1) : 1
+1 1 2, 4 (1) : 1
+1 1 3, 2 (1) : 1
+2 1 1, 7 (1) : 1
+2 1 2, 7 (1) : 1
+2 1 3, 6 (1) : 1
+3 1 1, 8 (1) : 1
+3 1 2, 8 (1) : 1
+3 1 3, 7 (1) : 1
+1 2 1, 4 (1) : 1
+1 2 2, 2 (1) : 1
+1 2 3, 3 (1) : 1
+2 2 1, 4 (1) : 1
+2 2 2, 2 (1) : 1
+2 2 3, 3 (1) : 1
+3 2 1, 5 (1) : 1
+3 2 2, 7 (1) : 1
+3 2 3, 6 (1) : 1
+1 3 1, 1 (1) : 1
+1 3 2, 1 (1) : 1
+1 3 3, 2 (1) : 1
+2 3 1, 2 (1) : 1
+2 3 2, 2 (1) : 1
+2 3 3, 3 (1) : 1
+3 3 1, 5 (1) : 1
+3 3 2, 5 (1) : 1
+3 3 3, 7 (1) : 1

@@ -1,0 +1,84 @@
+[System]
+Name='SF6'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=36
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='optimisation_panneau_solaire'
+Range=[-90 90]
+NumMFs=3
+MF1='Sud':'trapmf',[-80 -10 10 90]
+MF2='Ouest':'trapmf',[0 80 90 90]
+MF3='Est':'trapmf',[-90 -90 -80 0]
+
+[Input2]
+Name='moment_de_la_journee'
+Range=[0 24]
+NumMFs=4
+MF1='nuit':'trapmf',[0 0 7 8]
+MF2='matin':'trapmf',[7 8 12 13]
+MF3='soir':'trapmf',[17 20 24 24]
+MF4='après-midi':'trapmf',[12 13 17 20]
+
+[Input3]
+Name='saison'
+Range=[6 13]
+NumMFs=3
+MF1='été':'trapmf',[6 6 7 10]
+MF2='automne':'trapmf',[7 10 10 11]
+MF3='hiver':'trapmf',[10 12 13 13]
+
+[Output1]
+Name='électricité_maximale_panneau'
+Range=[0 1]
+NumMFs=4
+MF1='nulle':'constant',[0]
+MF2='faible':'constant',[0.5]
+MF3='moyenne':'constant',[1]
+MF4='importante':'constant',[0.5]
+
+[Rules]
+3 2 1, 3 (1) : 1
+3 4 1, 3 (1) : 1
+3 3 1, 2 (1) : 1
+3 1 1, 1 (1) : 1
+1 2 1, 3 (1) : 1
+1 4 1, 4 (1) : 1
+1 3 1, 3 (1) : 1
+1 1 1, 1 (1) : 1
+2 2 1, 2 (1) : 1
+2 4 1, 3 (1) : 1
+2 3 1, 3 (1) : 1
+2 1 1, 1 (1) : 1
+3 2 2, 2 (1) : 1
+3 4 2, 2 (1) : 1
+3 3 2, 1 (1) : 1
+3 1 2, 1 (1) : 1
+1 2 2, 2 (1) : 1
+1 4 2, 3 (1) : 1
+1 3 2, 2 (1) : 1
+1 1 2, 1 (1) : 1
+2 2 2, 2 (1) : 1
+2 4 2, 2 (1) : 1
+2 3 2, 2 (1) : 1
+2 1 2, 1 (1) : 1
+3 2 3, 2 (1) : 1
+3 4 3, 2 (1) : 1
+3 3 3, 1 (1) : 1
+3 1 3, 1 (1) : 1
+1 2 3, 2 (1) : 1
+1 4 3, 3 (1) : 1
+1 3 3, 1 (1) : 1
+1 1 3, 1 (1) : 1
+2 2 3, 1 (1) : 1
+2 4 3, 2 (1) : 1
+2 3 3, 1 (1) : 1
+2 1 3, 1 (1) : 1

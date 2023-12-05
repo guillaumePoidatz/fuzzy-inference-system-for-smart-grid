@@ -1,0 +1,47 @@
+[System]
+Name='SF4'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='Température_extérieure'
+Range=[-20 45]
+NumMFs=3
+MF1='Basse':'trapmf',[-40 -20 -6 10]
+MF2='Idéale':'trapmf',[-6 8 24 37]
+MF3='Elevée':'trapmf',[22 34 45 45]
+
+[Input2]
+Name='humidité'
+Range=[0 100]
+NumMFs=3
+MF1='Faible':'trapmf',[-45 0 10 35]
+MF2='Idéale':'trapmf',[30 40 60 70]
+MF3='Elevée':'trapmf',[60 90 100 190]
+
+[Output1]
+Name='conditions_météorologiques'
+Range=[0 1]
+NumMFs=3
+MF1='Mauvaises':'constant',[-1]
+MF2='Moyennes':'constant',[-0.5]
+MF3='Bonnes':'constant',[1]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 1 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 2 (1) : 1
+3 1, 1 (1) : 1
+3 2, 2 (1) : 1
+3 3, 1 (1) : 1
